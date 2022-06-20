@@ -11,14 +11,14 @@ public class MyLinkedList<T> {
     //добавляет элемент в конец
     public void add(Object value) {
         Node newNode = new Node(value);
-        Node node1 = first;
+        Node perviousnode = first;
         if (first == null) {
             first = newNode;
         } else {
-            while (node1.next != null) {
-                node1 = node1.next;
+            while (perviousnode.next != null) {
+                perviousnode = perviousnode.next;
             }
-            node1.next = newNode;
+            perviousnode.next = newNode;
         }
 
         size++;
@@ -44,10 +44,18 @@ public class MyLinkedList<T> {
 
 
     public T get(int index) {
-        Objects.checkIndex(index, size);
+        validateIndex(index);
         return getNodeByIndex(index).element;
     }
 
+    private void validateIndex(int index) {
+        if (index >= size || index < 0) {
+            throw new IndexOutOfBoundsException("Index can't be found! "
+                    + ". Total size of list = " + size);
+        }
+
+
+    }
 
     @Override
     public String toString() {
@@ -57,7 +65,7 @@ public class MyLinkedList<T> {
     }
 
     public T remove(int index) {
-        Objects.checkIndex(index, size);
+        validateIndex(index);
         T removedElement;
         if (index == 0) {
             removedElement = first.element;

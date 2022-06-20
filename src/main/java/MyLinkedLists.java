@@ -10,7 +10,7 @@ public class MyLinkedLists {
         integerMyLinkedList.add(18);
         System.out.println(integerMyLinkedList);
         System.out.println(integerMyLinkedList.size());
-        System.out.println(integerMyLinkedList.get(2));
+        System.out.println(integerMyLinkedList.get(21));
         integerMyLinkedList.remove(2);
         System.out.println( integerMyLinkedList);
         integerMyLinkedList.clear();
